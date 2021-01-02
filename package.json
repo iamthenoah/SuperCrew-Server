@@ -1,0 +1,30 @@
+{
+    "name": "SuperCrew-Server",
+    "version": "1.0.0",
+    "description": "SuperCrew Websocket Server",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/noahgreff/SuperCrew-Server.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/noahgreff/SuperCrew-Server/issues"
+    },
+    "homepage": "https://github.com/noahgreff/SuperCrew-Server#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    },
+    "dependencies": {
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "socket.io": "^3.0.4",
+        "uuid": "^8.3.2"
+    }
+}
