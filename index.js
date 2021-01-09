@@ -1,25 +1,17 @@
-const express = require('express');
-const app = express();
-const server = require('http').Server(app);
+const app = require('express')();
+const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const { v4: uuidv4 } = require('uuid');
 
 server.listen(3000);
 
-app.set('view engine,', 'ejs');
-app.use(express.static('public'));
+io.on('connect', socket => {
 
-app.get('/', (req, res) => {
-    res.redirect(`/${uuidv4()}`);
-});
+    console.log('connected:', socket.client.id);
 
-app.get('/:room', (req, res) => {
-    res.render('index.ejs', { data: req.params.room });
-});
+    socket.on('serverEvent', data => console.log('new message from client:', data));
 
-io.on('connection', socket => {
-    socket.on('join', (roomid, userid) => {
-        socket.join(roomid);
-        socket.to(roomid).broadcast.emit('user-connected', userid);
-    });
+    setInterval(() => {
+        socket.emit('clientEvent', Math.random());
+        console.log('message sent to the clients');
+    }, 3000);
 });
