@@ -1,8 +1,9 @@
 const app = require('express')();
 const server = require('http').createServer(app);
+server.listen(3000);
+
 const io = require('socket.io')(server);
 
-server.listen(3000);
 
 io.on('connect', socket => {
 
