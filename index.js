@@ -6,12 +6,9 @@ server.listen(3000);
 
 io.on('connect', socket => {
 
-    console.log('connected:', socket.client.id);
+    console.log('connected:', socket);
 
     socket.on('serverEvent', data => console.log('new message from client:', data));
 
-    setInterval(() => {
-        socket.emit('clientEvent', Math.random());
-        console.log('message sent to the clients');
-    }, 3000);
+    setInterval(() => socket.emit('clientEvent', Math.random()), 3000);
 });
