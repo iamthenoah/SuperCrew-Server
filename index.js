@@ -1,9 +1,9 @@
 const app = require('express')();
+const cors = require('cors');
 app.use(cors({ origin: '*' }));
 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const cors = require('cors');
 
 server.listen(process.env.PORT || 3000);
 
