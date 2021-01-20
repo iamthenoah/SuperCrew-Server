@@ -15,5 +15,5 @@ io.on('connect', socket => {
 
     console.log('connected:', socket.client.id);
 
-    socket.on('received', (id, data) => console.log('FROM:', id, 'DATA:', data));
+    socket.on('send', (id, data) => console.log('FROM:', id, 'DATA:', data));
 });
